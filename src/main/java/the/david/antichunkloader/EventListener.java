@@ -6,13 +6,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPortalEvent;
 
 public class EventListener implements Listener {
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onEntityPortal(EntityPortalEvent e){
         Location toLocation = e.getTo();
+        Location fromLocation = e.getFrom();
         if(toLocation == null || toLocation.getWorld() == null){
             return;
         }
-        if(toLocation.getNearbyPlayers(e.getSearchRadius() * 16, 319).isEmpty()){
+        if(toLocation.getNearbyPlayers(e.getSearchRadius(), 319).isEmpty() && fromLocation.getNearbyPlayers(e.getSearchRadius(), 319).isEmpty()){
             e.setCancelled(true);
         }
     }
