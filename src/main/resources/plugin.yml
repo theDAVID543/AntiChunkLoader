@@ -1,0 +1,4 @@
+name: AntiChunkLoader
+version: '${project.version}'
+main: the.david.antichunkloader.AntiChunkLoader
+api-version: '1.20'
